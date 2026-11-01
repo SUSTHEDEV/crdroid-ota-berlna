@@ -1,0 +1,63 @@
+name: OTA
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+jobs:
+  update-json:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download release asset and compute hashes
+        id: rel
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG=$(gh release view --json tagName -q .tagName)
+          NAME=$(gh release view --json assets -q '.assets[0].name')
+          gh release download "$TAG" -p '*.zip' -O rom.zip
+          URL="https://github.com/${GITHUB_REPOSITORY}/releases/download/${TAG}/${NAME}"
+          {
+            echo "tag=${TAG}"
+            echo "name=${NAME}"
+            echo "url=${URL}"
+            echo "ts=$(stat -c %Y rom.zip)"
+            echo "size=$(stat -c %s rom.zip)"
+            echo "md5=$(md5sum rom.zip | cut -d' ' -f1)"
+            echo "sha=$(sha256sum rom.zip | cut -d' ' -f1)"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Generate berlna.json
+        env:
+          URL: ${{ steps.rel.outputs.url }}
+          FILE: ${{ steps.rel.outputs.name }}
+          TS: ${{ steps.rel.outputs.ts }}
+          SIZE: ${{ steps.rel.outputs.size }}
+          MD5: ${{ steps.rel.outputs.md5 }}
+          SHA: ${{ steps.rel.outputs.sha }}
+        run: |
+          jq -n \
+            --arg d "$URL" --arg f "$FILE" --arg t "$TS" --arg s "$SIZE" \
+            --arg m "$MD5" --arg h "$SHA" \
+            '{response:[{maintainer:"SUSTHEDEV",oem:"Motorola",
+              device:"Motorola Edge (2021)",filename:$f,download:$d,
+              timestamp:($t|tonumber),md5:$m,sha256:$h,size:($s|tonumber),
+              version:"13.0",os_patch_level:"2026-10-01",os_sdk_level:37,
+              buildtype:"Unofficial",forum:"",gapps:"",firmware:"",modem:"",
+              bootloader:"",recovery:"",paypal:"",telegram:"",
+              dt:"https://github.com/LineageOS/android_device_motorola_berlna",
+              "common-dt":"https://github.com/LineageOS/android_device_motorola_sm7325-common",
+              kernel:"https://github.com/LineageOS/android_kernel_motorola_sm7325"}]}' > berlna.json
+
+      - name: Commit manifest
+        run: |
+          git config user.name "ota-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add berlna.json
+          git commit -m "OTA: ${FILE}" || exit 0
+          git push

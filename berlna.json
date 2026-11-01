@@ -1,0 +1,30 @@
+{
+    "response": [
+        {
+            "maintainer": "SUSTHEDEV",
+            "oem": "Motorola",
+            "device": "Motorola Edge (2021)",
+            "filename": "crDroidAndroid-17.0-20261031-berlna-v13.0.zip",
+            "download": "https://github.com/SUSTHEDEV/crdroid-ota-berlna/releases/download/v13.0-20261031/crDroidAndroid-17.0-20261031-berlna-v13.0.zip",
+            "timestamp": 1793488384,
+            "md5": "1a55c9fce5565fdbbf7ab7d4594e6538",
+            "sha256": "cc6ef3c8fc7bf287d509c833fb19222f7934075e5ba82e36f6ac7cb63501adb8",
+            "size": 1466067319,
+            "version": "13.0",
+            "os_patch_level": "2026-10-01",
+            "os_sdk_level": 37,
+            "buildtype": "Unofficial",
+            "forum": "",
+            "gapps": "",
+            "firmware": "",
+            "modem": "",
+            "bootloader": "",
+            "recovery": "",
+            "paypal": "",
+            "telegram": "",
+            "dt": "https://github.com/LineageOS/android_device_motorola_berlna",
+            "common-dt": "https://github.com/LineageOS/android_device_motorola_sm7325-common",
+            "kernel": "https://github.com/LineageOS/android_kernel_motorola_sm7325"
+        }
+    ]
+}
