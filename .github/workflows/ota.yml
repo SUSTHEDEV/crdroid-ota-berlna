@@ -55,9 +55,11 @@ jobs:
               kernel:"https://github.com/LineageOS/android_kernel_motorola_sm7325"}]}' > berlna.json
 
       - name: Commit manifest
+        env:
+          FILE: ${{ steps.rel.outputs.name }}
         run: |
           git config user.name "ota-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add berlna.json
           git commit -m "OTA: ${FILE}" || exit 0
-          git push
+          git push origin HEAD:main
