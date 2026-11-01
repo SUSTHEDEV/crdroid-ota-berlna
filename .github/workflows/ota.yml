@@ -39,24 +39,24 @@ jobs:
           DEVICE: ${{ steps.rel.outputs.device }}
           URL: ${{ steps.rel.outputs.url }}
           FILE: ${{ steps.rel.outputs.name }}
-          TS: ${{ steps.rel.outputs.ts }}
           SIZE: ${{ steps.rel.outputs.size }}
           MD5: ${{ steps.rel.outputs.md5 }}
           SHA: ${{ steps.rel.outputs.sha }}
         run: |
           F="${DEVICE}.json"
           if [ -f "$F" ]; then
-            # refresh build fields, keep authored metadata (maintainer, oem, dt links, ...)
+            # refresh content fields only - timestamp is a build property and
+            # stays owned by the build (release-ota.sh / $DEVICE.json)
             jq \
-              --arg f "$FILE" --arg d "$URL" --arg t "$TS" --arg s "$SIZE" \
+              --arg f "$FILE" --arg d "$URL" --arg s "$SIZE" \
               --arg m "$MD5" --arg h "$SHA" \
-              '.response[0] |= (.filename=$f | .download=$d | .timestamp=($t|tonumber) |
+              '.response[0] |= (.filename=$f | .download=$d |
                                 .size=($s|tonumber) | .md5=$m | .sha256=$h)' \
               "$F" > "$F.new" && mv "$F.new" "$F"
           else
             # first publish from CI alone - minimal manifest
             jq -n \
-              --arg dev "$DEVICE" --arg f "$FILE" --arg d "$URL" --arg t "$TS" \
+              --arg dev "$DEVICE" --arg f "$FILE" --arg d "$URL" --arg t "${{ steps.rel.outputs.ts }}" \
               --arg s "$SIZE" --arg m "$MD5" --arg h "$SHA" \
               '{response:[{maintainer:"",oem:"",device:"",filename:$f,download:$d,
                 timestamp:($t|tonumber),md5:$m,sha256:$h,size:($s|tonumber),
