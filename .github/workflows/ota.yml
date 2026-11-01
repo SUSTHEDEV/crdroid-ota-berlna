@@ -21,9 +21,11 @@ jobs:
           TAG=$(gh release view --json tagName -q .tagName)
           NAME=$(gh release view --json assets -q '.assets[0].name')
           gh release download "$TAG" -p '*.zip' -O rom.zip
+          DEVICE=$(sed -E 's/^crDroidAndroid-[0-9.]+-[0-9]{8}-([a-z0-9_]+)-v[0-9.]+\.zip$/\1/' <<< "$NAME")
+          [ -n "$DEVICE" ] && [ "$DEVICE" != "$NAME" ] || { echo "cannot derive device from '$NAME'" >&2; exit 1; }
           URL="https://github.com/${GITHUB_REPOSITORY}/releases/download/${TAG}/${NAME}"
           {
-            echo "tag=${TAG}"
+            echo "device=${DEVICE}"
             echo "name=${NAME}"
             echo "url=${URL}"
             echo "ts=$(stat -c %Y rom.zip)"
@@ -32,8 +34,9 @@ jobs:
             echo "sha=$(sha256sum rom.zip | cut -d' ' -f1)"
           } >> "$GITHUB_OUTPUT"
 
-      - name: Generate berlna.json
+      - name: Update <device>.json
         env:
+          DEVICE: ${{ steps.rel.outputs.device }}
           URL: ${{ steps.rel.outputs.url }}
           FILE: ${{ steps.rel.outputs.name }}
           TS: ${{ steps.rel.outputs.ts }}
@@ -41,25 +44,34 @@ jobs:
           MD5: ${{ steps.rel.outputs.md5 }}
           SHA: ${{ steps.rel.outputs.sha }}
         run: |
-          jq -n \
-            --arg d "$URL" --arg f "$FILE" --arg t "$TS" --arg s "$SIZE" \
-            --arg m "$MD5" --arg h "$SHA" \
-            '{response:[{maintainer:"SUSTHEDEV",oem:"Motorola",
-              device:"Motorola Edge (2021)",filename:$f,download:$d,
-              timestamp:($t|tonumber),md5:$m,sha256:$h,size:($s|tonumber),
-              version:"13.0",os_patch_level:"2026-10-01",os_sdk_level:37,
-              buildtype:"Unofficial",forum:"",gapps:"",firmware:"",modem:"",
-              bootloader:"",recovery:"",paypal:"",telegram:"",
-              dt:"https://github.com/LineageOS/android_device_motorola_berlna",
-              "common-dt":"https://github.com/LineageOS/android_device_motorola_sm7325-common",
-              kernel:"https://github.com/LineageOS/android_kernel_motorola_sm7325"}]}' > berlna.json
+          F="${DEVICE}.json"
+          if [ -f "$F" ]; then
+            # refresh build fields, keep authored metadata (maintainer, oem, dt links, ...)
+            jq \
+              --arg f "$FILE" --arg d "$URL" --arg t "$TS" --arg s "$SIZE" \
+              --arg m "$MD5" --arg h "$SHA" \
+              '.response[0] |= (.filename=$f | .download=$d | .timestamp=($t|tonumber) |
+                                .size=($s|tonumber) | .md5=$m | .sha256=$h)' \
+              "$F" > "$F.new" && mv "$F.new" "$F"
+          else
+            # first publish from CI alone - minimal manifest
+            jq -n \
+              --arg dev "$DEVICE" --arg f "$FILE" --arg d "$URL" --arg t "$TS" \
+              --arg s "$SIZE" --arg m "$MD5" --arg h "$SHA" \
+              '{response:[{maintainer:"",oem:"",device:"",filename:$f,download:$d,
+                timestamp:($t|tonumber),md5:$m,sha256:$h,size:($s|tonumber),
+                version:"",os_patch_level:"",os_sdk_level:0,buildtype:"Unofficial",
+                forum:"",gapps:"",firmware:"",modem:"",bootloader:"",recovery:"",
+                paypal:"",telegram:"",dt:"",common-dt:"",kernel:""}]}' > "$F"
+          fi
 
       - name: Commit manifest
         env:
+          DEVICE: ${{ steps.rel.outputs.device }}
           FILE: ${{ steps.rel.outputs.name }}
         run: |
           git config user.name "ota-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add berlna.json
-          git commit -m "OTA: ${FILE}" || exit 0
+          git add "${DEVICE}.json"
+          git commit -m "OTA [${DEVICE}]: ${FILE}" || exit 0
           git push origin HEAD:main
