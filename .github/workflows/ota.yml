@@ -62,7 +62,7 @@ jobs:
                 timestamp:($t|tonumber),md5:$m,sha256:$h,size:($s|tonumber),
                 version:"",os_patch_level:"",os_sdk_level:0,buildtype:"Unofficial",
                 forum:"",gapps:"",firmware:"",modem:"",bootloader:"",recovery:"",
-                paypal:"",telegram:"",dt:"",common-dt:"",kernel:""}]}' > "$F"
+                paypal:"",telegram:"",dt:"","common-dt":"",kernel:""}]}' > "$F"
           fi
 
       - name: Commit manifest
