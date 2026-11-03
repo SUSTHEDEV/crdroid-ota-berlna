@@ -1,0 +1,30 @@
+{
+  "response": [
+    {
+      "maintainer": "SUSTHEDEV",
+      "oem": "Google",
+      "device": "Pixel 7",
+      "filename": "crDroidAndroid-17.0-20261103-panther-v13.0.zip",
+      "download": "https://github.com/SUSTHEDEV/crdroid-ota-berlna/releases/download/v13.0-20261103/crDroidAndroid-17.0-20261103-panther-v13.0.zip",
+      "timestamp": 1793718232,
+      "md5": "2959147df35bdc940e8b4f27c2da8e84",
+      "sha256": "10633ebad31b1166facb9f584505cc59b2b4b60b2b0efa8edbc983e6b07a7675",
+      "size": 1798306539,
+      "version": "13.0",
+      "os_patch_level": "2026-10-01",
+      "os_sdk_level": 37,
+      "buildtype": "Unofficial",
+      "forum": "",
+      "gapps": "",
+      "firmware": "",
+      "modem": "",
+      "bootloader": "",
+      "recovery": "",
+      "paypal": "",
+      "telegram": "",
+      "dt": "https://github.com/LineageOS/android_device_google_pantah",
+      "common-dt": "https://github.com/LineageOS/android_device_google_gs201",
+      "kernel": "https://android.googlesource.com/device/google/pantah-kernels/6.1/"
+    }
+  ]
+}
