@@ -1,14 +1,22 @@
 ====================
+     11-04-2026
+====================
+
+====================
+     11-03-2026
+====================
+
+====================
+     11-02-2026
+====================
+
+====================
+     11-01-2026
+====================
+
+====================
      10-31-2026
 ====================
-
-====================
-     10-30-2026
-====================
-
-   * device/motorola/sm7325-common
-4276563 sm7325-common: fstab: Drop AVB keys
-6bfc0d2 sm7325-common: Removing GSI keys
 
    * device/qcom/sepolicy
 a8385f33 generic: Allow dumping the audio HAL extension service
@@ -952,21 +960,35 @@ bf7c33cc5bf5 fw/b: Add support for runtime toggle of navbar
 e81d93cb250a base: Add stub files
 
 ====================
+     10-30-2026
+====================
+
+   * device/motorola/sm7325-common
+4276563 sm7325-common: fstab: Drop AVB keys
+6bfc0d2 sm7325-common: Removing GSI keys
+
+====================
      10-29-2026
-====================
-
-   * frameworks/opt/telephony
-3d18db0ef2 WapPush: validate WSP header length before allocation
-
-   * packages/apps/Updater
-0e7dded Updater: Download updates over parallel connections
-
-====================
-     10-28-2026
 ====================
 
    * frameworks/base
 77e6a90c29a1 biometrics: Fix HIDL->AIDL Face Unlock implementations
+
+   * frameworks/opt/telephony
+3d18db0ef2 WapPush: validate WSP header length before allocation
+
+   * packages/apps/Launcher3
+d56accb8f3 Launcher3: WallpaperService: Use LauncherPrefs to prevent runtime error at boot
+
+   * packages/apps/Updater
+0e7dded Updater: Download updates over parallel connections
+
+   * packages/apps/crDroidSettings
+bcc07244 crdroid: Sync action assignment changes with lineage
+
+====================
+     10-28-2026
+====================
 
    * lineage-sdk
 493d0ef9 lineage-sdk: Harden LineageHardwareManager against HAL errors
@@ -1003,7 +1025,8 @@ fe34e877 Kill trust interface hint on first boot
 8eacb0bad Merge 'lineage-24.0' into 17.0
 
    * packages/apps/Launcher3
-d56accb8f3 Launcher3: WallpaperService: Use LauncherPrefs to prevent runtime error at boot
+9081a1d857 Launcher3: Harden widget picker theme against stale theme IDs
+be623c77d5 Launcher3: Apply drawer opacity to stock background
 
    * packages/apps/LineageParts
 66bbb58 Disable unused components
@@ -1016,7 +1039,6 @@ d56accb8f3 Launcher3: WallpaperService: Use LauncherPrefs to prevent runtime err
 01b1e69 Ship as crDroid based on LOS
 
    * packages/apps/crDroidSettings
-bcc07244 crdroid: Sync action assignment changes with lineage
 5e0a0a0b New Crowdin updates (#1349)
 
 ====================
@@ -1034,10 +1056,6 @@ be7f9ad529 libs: Add MTK GED-KPI support to fix MTK gpufreq Mediatek GPU (#25)
 854d7bfc sdk: Make the assist short/long press action configurable
 74899cb5 sdk: Add a cycle ringer mode button action
 933f1b44 sdk: Update button actions list in lineage/res/res/values/config.xml
-
-   * packages/apps/Launcher3
-9081a1d857 Launcher3: Harden widget picker theme against stale theme IDs
-be623c77d5 Launcher3: Apply drawer opacity to stock background
 
    * packages/apps/LineageParts
 6ba3c40 LineageParts: Use the configured assist short/long press action
@@ -1225,37 +1243,12 @@ f4650fbd addons: Remove overlay colors
 b3dc08e9 addons: Unify nothingdot font overlays
 15bf457d addons: Remove google sans flex font package which is default
 
-====================
-     10-26-2026
-====================
-
-   * device/qcom/sepolicy_vndr/sm8750
-b25101da3 sepolicy_vndr: Restore rules for non init.rc lowi-server
-
-   * frameworks/base
-90048ee81588 fixup! frameworks: Add device controls shortcut to power menu
-
-   * hardware/qcom-caf/sm8450/audio/pal
-2b80768e6 pal: Add an option to prefer master gain for equal channel volumes
-
-   * packages/apps/OmniStyle
-f0e15bc OmniStyle: Open header browser on pack passed by Settings
-47a3caf OmniStyle: Drop online mode and revamp header picker in Material 3
-9cd8cf1 OmniStyle: Remove picasso lib
-
    * vendor/apn
 7693bb9 apn: Support Python 3.8
 
-   * vendor/lineage
-617061e8 Merge pull request #81 from opti-prime/17.0
-18fe9ac4 build: fix cross-platform DTBO dependency cycle
-
 ====================
-     10-25-2026
+     10-26-2026
 ====================
-
-   * build/make
-c88603ad43 build: Prevent lineage_ prefix in vendor props
 
    * device/motorola/sm7325-common
 cf5a04f sm7325-common: Rename MotoNrEnabler to MotoExtTelephony
@@ -1263,12 +1256,13 @@ cf5a04f sm7325-common: Rename MotoNrEnabler to MotoExtTelephony
    * device/qcom/sepolicy_vndr/legacy-um
 d8b5ffdf5 sepolicy_vndr: Label nfc2 nxp HAL
 
+   * device/qcom/sepolicy_vndr/sm8750
+b25101da3 sepolicy_vndr: Restore rules for non init.rc lowi-server
+
    * frameworks/base
+90048ee81588 fixup! frameworks: Add device controls shortcut to power menu
 d2b9a1736f29 base: Follow Dark/Light theme for Safe Mode dialog
 f857d9765caa Set alert dialog message to use system font
-
-   * hardware/lineage/compat
-f67ba75 compat: Add shim to provide ion_close with proper close(fd)
 
    * hardware/lineage/interfaces
 68dca0c fingerprint: aidl: Allow customizing the per-user store path
@@ -1277,15 +1271,16 @@ f67ba75 compat: Add shim to provide ion_close with proper close(fd)
 6b0714b Reland "MotoNrEnabler: Rename to MotoExtTelephony"
 f40a5ea Revert "MotoNrEnabler: Rename to MotoExtTelephony"
 
-   * hardware/qcom-caf/sm8750/display/hal
-5b970807ee display: init: add soc-id support for Kera IoT SoC variants
-c4aa37070a init: add socid for kera
+   * hardware/qcom-caf/sm8450/audio/pal
+2b80768e6 pal: Add an option to prefer master gain for equal channel volumes
 
    * lineage/scripts
 abe932a pixel: Fix BuildSystemDesc in PRODUCT_BUILD_PROP_OVERRIDES
 
-   * packages/apps/Launcher3
-cfe7d4a56d Launcher3: Fix NPE when screen reader is active
+   * packages/apps/OmniStyle
+f0e15bc OmniStyle: Open header browser on pack passed by Settings
+47a3caf OmniStyle: Drop online mode and revamp header picker in Material 3
+9cd8cf1 OmniStyle: Remove picasso lib
 
    * packages/apps/Settings
 599c7eb9502 Settings: Remove orphaned window blurs developer option
@@ -1294,111 +1289,8 @@ c62a27bfd82 Settings: Don't show 6GHz option for hotspot if unsupported
 
    * packages/apps/crDroidSettings
 ee2a05c5 crdroid: Update API for custom font selection
-b8b3a21a crdroid: Rework font selection UI
-b2fa1380 crdroid: Fix toggle on games spoofing screen
 
    * vendor/lineage
-33c43015 overlay: Use google-sans-flex-medium font as well
-
-====================
-     10-24-2026
-====================
-
-   * bootable/recovery
-0e6259e2 recovery: Modernize menu with Material 3 segmented cards
-
-   * build/soong
-e4680573d always use UTC as the time zone for build dates
-
-   * device/lineage/sepolicy
-2eb9e3c sepolicy: Avail adb root services only on debug builds
-
-   * hardware/lineage/generic-ims
-12db0c0 carriersettings: Reload configs when the override changes
-
-   * hardware/motorola
-12bce11 MotoNrEnabler: Rename to MotoExtTelephony
-9b42387 MotoNrEnabler: Add legacy sim switching
-
-   * lineage-sdk
-49948877 sdk: ConnectionSettings: Set attribution tag for BluetoothAdapter
-
-   * lineage/scripts
-40ed70f dev: rro: Support `resourcesMap` overlay attr
-df9f142 device-deps-regenerator: Ignore qcs8550-ack
-5c4351f device-deps-regenerator: Skip deps without `repository` field
-
-   * packages/apps/LineageCustomizer
-6102f87 LineageCustomizer: Serve Google TV OEM configuration
-
-   * packages/apps/Sandbox
-b46d84d sandbox: Update repository link
-
-   * packages/apps/WallpaperPicker2
-b5f07470f WallpaperPicker2: Support downloadable Pixel live wallpapers
-f63030e8a WallpaperPicker2: Fix Google dynamic wallpaper previews
-8deafc600 WallpaperPicker2: Implement Pixel wallpaper integration
-
-   * vendor/lineage
-525cd264 overlay: Enable ambient AOD
-9e09ebeb envsetup: Fix host name generation to latest specs
-2ce5c218 config: Move adb_root outside userbuild
-
-====================
-     10-23-2026
-====================
-
-   * art
-5ecea94b34 arm64: recognize Tensor G4 CPU variants (Cortex-A520/A720/X4)
-8e1c0c25a4 libprofile: bound num_method_ids/num_type_ids when reading a profile
-
-   * build/soong
-c750a4b16 arm64: add Cortex-A520/A720/X4 cpu variants
-
-   * external/conscrypt
-98b584274 Update blocklist
-1631d45bc Don't require a trailing comma
-256334946 Update awk script for new array size names
-
-   * hardware/lineage/interfaces
-13281f8 fingerprint: aidl: Log sensor id in getSensorProps
-
-   * hardware/qcom-caf/sdm660/audio
-0e07d71fe hal: Stop compress VoIP PCM when the call is kept alive
-
-   * lineage/scripts
-01a110e build-webview: Update default webview to 156.0.8078.47
-
-   * packages/apps/Aperture
-e4fc829 Aperture: Support QHD video quality
-
-   * packages/apps/crDroidSettings
-419d2cdc New Crowdin updates (#1347)
-
-   * packages/resources/apps
-d8d8abd New Crowdin updates (#13)
-
-====================
-     10-22-2026
-====================
-
-   * hardware/lineage/interfaces
-9866a16 health: batteryless: Uprev to version 5
-
-   * lineage/scripts
-673ea75 dev: rro: add generic-ims to package locations
-3896d39 dev: rro: Search device/lineage/atv/apps
-
-   * packages/apps/Dialer
-9c5039d8d fixup! Dialer: Fix settings
-
-   * packages/inputmethods/LatinIME
-5dd9736c9 LatinIME: Enable emoji key by default
-e48a3e43f LatinIME: Completely remove language switch key
-
-   * system/media
-f150131c audio: Treat DTS as IEC 61937 compatible
-
-   * vendor/lineage
-4506a76d roomservice: Support including kernel snippets
+617061e8 Merge pull request #81 from opti-prime/17.0
+18fe9ac4 build: fix cross-platform DTBO dependency cycle
 
