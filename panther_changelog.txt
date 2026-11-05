@@ -18,6 +18,10 @@
      10-31-2026
 ====================
 
+====================
+     10-30-2026
+====================
+
    * device/motorola/sm7325-common
 4276563 sm7325-common: fstab: Drop AVB keys
 6bfc0d2 sm7325-common: Removing GSI keys
@@ -964,7 +968,7 @@ bf7c33cc5bf5 fw/b: Add support for runtime toggle of navbar
 e81d93cb250a base: Add stub files
 
 ====================
-     10-30-2026
+     10-29-2026
 ====================
 
    * frameworks/opt/telephony
@@ -974,7 +978,7 @@ e81d93cb250a base: Add stub files
 0e7dded Updater: Download updates over parallel connections
 
 ====================
-     10-29-2026
+     10-28-2026
 ====================
 
    * frameworks/base
@@ -1032,17 +1036,20 @@ bcc07244 crdroid: Sync action assignment changes with lineage
 5e0a0a0b New Crowdin updates (#1349)
 
 ====================
-     10-28-2026
+     10-27-2026
 ====================
 
    * frameworks/base
 0b34e53c6950 PhoneWindowManager: Use the configured assist short/long press action
+bc53f5b71c01 PhoneWindowManager: Add support for the cycle ringer mode button action
 
    * frameworks/native
 be7f9ad529 libs: Add MTK GED-KPI support to fix MTK gpufreq Mediatek GPU (#25)
 
    * lineage-sdk
 854d7bfc sdk: Make the assist short/long press action configurable
+74899cb5 sdk: Add a cycle ringer mode button action
+933f1b44 sdk: Update button actions list in lineage/res/res/values/config.xml
 
    * packages/apps/Launcher3
 9081a1d857 Launcher3: Harden widget picker theme against stale theme IDs
@@ -1052,6 +1059,9 @@ be623c77d5 Launcher3: Apply drawer opacity to stock background
 6ba3c40 LineageParts: Use the configured assist short/long press action
 e44a003 LineageParts: Add a cycle ringer mode button action
 c23b95e LineageParts: Make partial screenshot action translatable
+
+   * packages/apps/OmniStyle
+def18d0 OmniStyle: Remove unused wallpaper cropper
 
    * packages/apps/Settings
 abc2eeaaa08 Settings: Fix per-SIM ringtone availability with eSIM / empty slots
@@ -1205,41 +1215,6 @@ e53ec4b453c Settings: Add icon for emergency broadcasts
 4d3303bf08e Settings: Add back crdroid logo
 d4974f4627b Settings: Show CR version in About menu
 
-   * packages/apps/crDroidSettings
-9273ce55 crdroid: Fix preview of OOS clock 2
-9a5bf3e6 crdroid: trickystore: Validate imported target modes
-4d22e031 crdroid: Add glass and tinted shade color styles
-
-   * packages/services/Telecomm
-1d2ddee18 Telecomm: Phone ringtone setting for Multi SIM device [3/3]
-
-   * vendor/addons
-f4650fbd addons: Remove overlay colors
-
-====================
-     10-27-2026
-====================
-
-   * device/qcom/sepolicy_vndr/sm8750
-b25101da3 sepolicy_vndr: Restore rules for non init.rc lowi-server
-
-   * frameworks/base
-bc53f5b71c01 PhoneWindowManager: Add support for the cycle ringer mode button action
-90048ee81588 fixup! frameworks: Add device controls shortcut to power menu
-
-   * hardware/qcom-caf/sm8450/audio/pal
-2b80768e6 pal: Add an option to prefer master gain for equal channel volumes
-
-   * lineage-sdk
-74899cb5 sdk: Add a cycle ringer mode button action
-933f1b44 sdk: Update button actions list in lineage/res/res/values/config.xml
-
-   * packages/apps/OmniStyle
-def18d0 OmniStyle: Remove unused wallpaper cropper
-f0e15bc OmniStyle: Open header browser on pack passed by Settings
-47a3caf OmniStyle: Drop online mode and revamp header picker in Material 3
-9cd8cf1 OmniStyle: Remove picasso lib
-
    * packages/apps/Updater
 d1c7e3e Updater: Rectify links for Android 17
 1ae23c0 Updater: Adapt colors in lottie animations
@@ -1253,67 +1228,51 @@ d071387 Ship as crDroid based on LOS
 2edf6b6 Updater: Use default user agent for SingleRangeHttpFetcher
 
    * packages/apps/crDroidSettings
+9273ce55 crdroid: Fix preview of OOS clock 2
+9a5bf3e6 crdroid: trickystore: Validate imported target modes
+4d22e031 crdroid: Add glass and tinted shade color styles
 6cbb98d7 crdroid: Fix QS header image settings
 
+   * packages/services/Telecomm
+1d2ddee18 Telecomm: Phone ringtone setting for Multi SIM device [3/3]
+
    * vendor/addons
+f4650fbd addons: Remove overlay colors
 b3dc08e9 addons: Unify nothingdot font overlays
 15bf457d addons: Remove google sans flex font package which is default
-
-   * vendor/apn
-7693bb9 apn: Support Python 3.8
 
 ====================
      10-26-2026
 ====================
 
-   * build/make
-c88603ad43 build: Prevent lineage_ prefix in vendor props
-
-   * device/google/gs201
-89fb470b gs201: Update arch setup
-8cefa13d gs201: Moved GlanceableHub to addons
-
-   * device/google/pantah
-f11ae70 Merge github.com:LineageOS/android_device_google_pantah into 17.0
-
    * device/motorola/sm7325-common
 cf5a04f sm7325-common: Rename MotoNrEnabler to MotoExtTelephony
 
-   * device/qcom/sepolicy_vndr/legacy-um
-d8b5ffdf5 sepolicy_vndr: Label nfc2 nxp HAL
+   * device/qcom/sepolicy_vndr/sm8750
+b25101da3 sepolicy_vndr: Restore rules for non init.rc lowi-server
 
    * frameworks/base
-d2b9a1736f29 base: Follow Dark/Light theme for Safe Mode dialog
-f857d9765caa Set alert dialog message to use system font
-
-   * hardware/lineage/compat
-f67ba75 compat: Add shim to provide ion_close with proper close(fd)
-
-   * hardware/lineage/interfaces
-68dca0c fingerprint: aidl: Allow customizing the per-user store path
+90048ee81588 fixup! frameworks: Add device controls shortcut to power menu
 
    * hardware/motorola
 6b0714b Reland "MotoNrEnabler: Rename to MotoExtTelephony"
 f40a5ea Revert "MotoNrEnabler: Rename to MotoExtTelephony"
 
-   * lineage/scripts
-abe932a pixel: Fix BuildSystemDesc in PRODUCT_BUILD_PROP_OVERRIDES
+   * hardware/qcom-caf/sm8450/audio/pal
+2b80768e6 pal: Add an option to prefer master gain for equal channel volumes
 
-   * packages/apps/Launcher3
-cfe7d4a56d Launcher3: Fix NPE when screen reader is active
+   * packages/apps/OmniStyle
+f0e15bc OmniStyle: Open header browser on pack passed by Settings
+47a3caf OmniStyle: Drop online mode and revamp header picker in Material 3
+9cd8cf1 OmniStyle: Remove picasso lib
 
    * packages/apps/Settings
 599c7eb9502 Settings: Remove orphaned window blurs developer option
-886027cf60d Settings: Fix NFC payment settings activity
-c62a27bfd82 Settings: Don't show 6GHz option for hotspot if unsupported
 
-   * packages/apps/crDroidSettings
-ee2a05c5 crdroid: Update API for custom font selection
-b8b3a21a crdroid: Rework font selection UI
-b2fa1380 crdroid: Fix toggle on games spoofing screen
+   * vendor/apn
+7693bb9 apn: Support Python 3.8
 
    * vendor/lineage
 617061e8 Merge pull request #81 from opti-prime/17.0
 18fe9ac4 build: fix cross-platform DTBO dependency cycle
-33c43015 overlay: Use google-sans-flex-medium font as well
 
