@@ -2,29 +2,23 @@
   "response": [
     {
       "maintainer": "SUSTHEDEV",
+      "currently_maintained": false,
       "oem": "",
       "device": "",
-      "filename": "crDroidAndroid-17.0-20261114-berlna-v13.1.zip",
-      "download": "https://github.com/SUSTHEDEV/crdroid-ota-berlna/releases/download/v13.1-20261114/crDroidAndroid-17.0-20261114-berlna-v13.1.zip",
-      "timestamp": 1794705266,
-      "md5": "0d4a752d095608e9a0f3ba659913703b",
-      "sha256": "6960d93dfd390fd5342cc217de875e7be10d2a0ab434250e3ac6ac37098d5312",
-      "size": 1573821965,
-      "version": "13.1",
-      "os_patch_level": "2026-11-01",
-      "os_sdk_level": 37,
+      "filename": "EvolutionX-17.0-20261115-berlna-12.4-Unofficial.zip",
+      "download": "https://sourceforge.net/projects/crdroid-ota-berlna/files/12.4-20261115/EvolutionX-17.0-20261115-berlna-12.4-Unofficial.zip/download",
+      "timestamp": 1794781990,
+      "md5": "80656f608debebd1603f9b322bff16e9",
+      "sha256": "5f340141cae6b246f52b739f80ae5622879dd0eb542a22e4ff98851653440f1e",
+      "size": 3031528972,
+      "version": "12.4",
       "buildtype": "Unofficial",
       "forum": "",
-      "gapps": "",
       "firmware": "",
-      "modem": "",
-      "bootloader": "",
-      "recovery": "",
       "paypal": "",
-      "telegram": "",
-      "dt": "",
-      "common-dt": "",
-      "kernel": ""
+      "github": "",
+      "initial_installation_images": [],
+      "extra_images": []
     }
   ]
 }
