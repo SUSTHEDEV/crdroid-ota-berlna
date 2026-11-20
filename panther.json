@@ -2,29 +2,30 @@
   "response": [
     {
       "maintainer": "SUSTHEDEV",
+      "currently_maintained": true,
       "oem": "Google",
       "device": "Pixel 7",
-      "filename": "crDroidAndroid-17.0-20261113-panther-v13.1.zip",
-      "download": "https://github.com/SUSTHEDEV/crdroid-ota-berlna/releases/download/v13.1-20261113/crDroidAndroid-17.0-20261113-panther-v13.1.zip",
-      "timestamp": 1794624565,
-      "md5": "c03ff9f724bfc6253cb5d4d51ada9b8e",
-      "sha256": "4ae6b3ba169670d7c18c8165d15d2ccf4dd18de627d4ccdb815e048d98f2ecb0",
-      "size": 1800969474,
-      "version": "13.1",
-      "os_patch_level": "2026-11-01",
-      "os_sdk_level": 37,
+      "filename": "EvolutionX-17.0-20261119-panther-12.4-Unofficial.zip",
+      "download": "https://sourceforge.net/projects/crdroid-ota-berlna/files/12.4-20261119/EvolutionX-17.0-20261119-panther-12.4-Unofficial.zip/download",
+      "timestamp": 1795153715,
+      "md5": "9b27bae0306d99bc0338a27226a12a8b",
+      "sha256": "fcb3bc3137015b16e62a6d84fff291840e9626fd27e99c3faca29e1a3a248831",
+      "size": 3208607043,
+      "version": "12.4",
       "buildtype": "Unofficial",
-      "forum": "https://xdaforums.com/t/rom-official-panther-16-0-crdroidandroid-v12-x.4757539/",
-      "gapps": "https://sourceforge.net/projects/nikgapps/files/",
-      "firmware": "https://flash.android.com/",
-      "modem": "",
-      "bootloader": "",
-      "recovery": "https://sourceforge.net/projects/crdroid/files/panther/13.x/recovery/",
-      "paypal": "https://www.paypal.me/vikasyaduvanshii",
-      "telegram": "https://t.me/pixel7crdroid",
-      "dt": "https://github.com/crdroidandroid/android_device_google_pantah",
-      "common-dt": "https://github.com/crdroidandroid/android_device_google_gs201",
-      "kernel": "https://android.googlesource.com/device/google/pantah-kernels/6.1/"
+      "forum": "",
+      "firmware": "",
+      "paypal": "",
+      "github": "nhansp",
+      "initial_installation_images": [
+        "boot",
+        "dtbo",
+        "vendor_kernel_boot",
+        "vendor_boot"
+      ],
+      "extra_images": [
+        "init_boot"
+      ]
     }
   ]
 }
